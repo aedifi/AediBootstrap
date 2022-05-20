@@ -1,13 +1,13 @@
 <?php
-// Bakelite/skin.php
-// Bakelite skin file.
+// AediBootstrap/skin.php
+// AediBootstrap skin file.
 
 if (!defined("IN_ESO")) exit;
 
-class Bakelite extends Skin {
+class AediBootstrap extends Skin {
 
-var $name = "Bakelite";
-var $version = "1.1";
+var $name = "AediBootstrap";
+var $version = "1.0";
 var $author = "grntbg";
 var $numberOfColors = 27;
 
@@ -15,8 +15,14 @@ var $numberOfColors = 27;
 function init()
 {
 	global $config;
+
+	// Register the custom wrapper.
+	$this->registerView("wrapper.php", "skins/AediBootstrap/wrapper.view.php");
+
 	$this->eso->addCSS("skins/base.css");
 	$this->eso->addCSS("skins/{$config["skin"]}/styles.css");
+	// Add the custom CSS file to an array.
+	$this->eso->addCSS("skins/{$config["skin"]}/custom.css");
 	$this->eso->addCSS("skins/ie6.css", "ie6");
 	$this->eso->addCSS("skins/ie7.css", "ie7");
 	$this->eso->addToHead("<link rel='shortcut icon' type='image/ico' href='skins/{$config["skin"]}/favicon.ico'/>");
